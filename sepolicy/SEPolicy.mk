@@ -5,10 +5,10 @@
 #
 
 BOARD_VENDOR_SEPOLICY_DIRS += \
-    device/oneplus/macan-camera/sepolicy/vendor
+    device/oneplus/infiniti-camera/sepolicy/vendor
 
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += \
-    device/oneplus/macan-camera/sepolicy/private
+    device/oneplus/infiniti-camera/sepolicy/private
 
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += \
-    device/oneplus/macan-camera/sepolicy/public
+    device/oneplus/infiniti-camera/sepolicy/public

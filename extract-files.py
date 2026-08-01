@@ -6183,7 +6183,7 @@ namespace_imports = [
 module = ExtractUtilsModule(
     'macan-camera',
     'oneplus',
-    device_rel_path='device/oneplus/macan-camera',
+    device_rel_path='device/oneplus/infiniti-camera',
     blob_fixups=blob_fixups,
     lib_fixups=lib_fixups,
     namespace_imports=namespace_imports,
