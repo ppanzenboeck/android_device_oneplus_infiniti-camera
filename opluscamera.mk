@@ -9,8 +9,8 @@ PRODUCT_PACKAGES += \
     Photos
 
 # System server
-# PRODUCT_SYSTEM_SERVER_JARS += \
-#     oplus-services
+PRODUCT_SYSTEM_SERVER_JARS += \
+    oplus-services
 PRODUCT_DEX_PREOPT_MODULE_CONFIGS += oplus-services=disable
 
 # Framework
