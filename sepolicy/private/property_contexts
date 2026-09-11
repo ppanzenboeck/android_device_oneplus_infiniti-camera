@@ -11,6 +11,8 @@ persist.ipe.debug                   u:object_r:exported_system_prop:s0
 oplus.camera.packname               u:object_r:exported_system_prop:s0
 oplus.camera.orms                   u:object_r:exported_system_prop:s0
 oplus.systemclearservice.status     u:object_r:oplus_systemclearservice_prop:s0
+ro.oplus.key.actionbutton          u:object_r:exported_system_prop:s0
+ro.oplus.flashlight.rio.switch     u:object_r:exported_system_prop:s0
 
 # Region
 persist.sys.oppo.region             u:object_r:exported_system_prop:s0
