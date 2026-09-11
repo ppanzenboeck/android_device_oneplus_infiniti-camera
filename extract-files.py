@@ -6091,60 +6091,20 @@ blob_fixups: blob_fixups_user_type = {
         .call(blob_fixup_aiunit_settings_category)
         .apktool_pack()
         .stripzip(),
-    'system_ext/etc/permissions/vendor-oplus-hardware-cryptoeng.xml': blob_fixup()
-        .call(blob_fixup_cryptoeng_permissions_xml),
-    'odm/etc/permissions/vendor-oplus-hardware-cryptoeng.xml': blob_fixup()
-        .call(blob_fixup_cryptoeng_permissions_xml),
-    'odm/etc/init/vendor.oplus.hardware.cryptoeng@1.0-service_FDE.rc': blob_fixup()
-        .call(blob_fixup_cryptoeng_init_rc),
-    'odm/etc/vintf/manifest/manifest_oplus_cryptoeng.xml': blob_fixup()
-        .call(blob_fixup_cryptoeng_manifest),
-    'system_ext/app/FileManager/FileManager.apk': blob_fixup()
-        .call(blob_fixup_apktool_unpack_full)
-        .call(blob_fixup_opluscamera_uses_library)
-        .call(blob_fixup_filemanager_safecheck_direct)
-        .call(blob_fixup_filemanager_select_dir_current_path_fallback)
-        .call(blob_fixup_filemanager_cut_skip_k0_when_same_disk)
-        .call(blob_fixup_filemanager_copycut_skip_osense_scene)
-        .call(blob_fixup_filemanager_superapp_zip_preview)
-        .call(blob_fixup_filemanager_skip_osense_scene_actions)
-        .apktool_pack()
-        .stripzip(),
+    'system_ext/lib64/libcsextimpl.so': blob_fixup()
+        .replace_needed(
+            'android.hardware.camera.provider-V3-ndk.so',
+            'android.hardware.camera.provider-V4-ndk.so',)
+        .replace_needed(
+            'android.hardware.camera.device-V3-ndk.so',
+            'android.hardware.camera.device-V4-ndk.so',)
+        .replace_needed('libbase.so', 'libbase-stock.so'),
     'system_ext/app/Melody/Melody.apk': blob_fixup()
         .call(blob_fixup_apktool_unpack_full)
         .call(blob_fixup_opluscamera_uses_library)
         .call(blob_fixup_oplus_camera_system_properties)
         .call(blob_fixup_strip_oem_permissions)
         .call(blob_fixup_melody_repackaging_detector)
-        .apktool_pack()
-        .stripzip(),
-    'system_ext/priv-app/UMS/UMS.apk': blob_fixup()
-        .call(blob_fixup_apktool_unpack_full)
-        .call(blob_fixup_opluscamera_uses_library)
-        .call(blob_fixup_ums_activity_watcher_permission)
-        .apktool_pack()
-        .stripzip(),
-    'system_ext/priv-app/OplusExSystemService/OplusExSystemService.apk': blob_fixup()
-        .call(blob_fixup_apktool_unpack_full)
-        .call(blob_fixup_opluscamera_uses_library)
-        .apktool_pack()
-        .stripzip(),
-    'system_ext/priv-app/DCS/DCS.apk': blob_fixup()
-        .call(blob_fixup_apktool_unpack_full)
-        .call(blob_fixup_opluscamera_uses_library)
-        .apktool_pack()
-        .stripzip(),
-    'system_ext/priv-app/FileEncryption/FileEncryption.apk': blob_fixup()
-        .call(blob_fixup_apktool_unpack_full)
-        .call(blob_fixup_opluscamera_uses_library)
-        .call(blob_fixup_fileencryption_secure_settings_permission)
-        .call(blob_fixup_fileencryption_biometric_enrollment_checks)
-        .call(blob_fixup_oplus_camera_system_properties)
-        .apktool_pack()
-        .stripzip(),
-    'system_ext/app/SecurityPermission/SecurityPermission.apk': blob_fixup()
-        .call(blob_fixup_apktool_unpack_full)
-        .call(blob_fixup_securitypermission_safe_permissions)
         .apktool_pack()
         .stripzip(),
 }  # fmt: skip
@@ -6187,35 +6147,17 @@ def write_custom_android_bp():
     if not android_bp.exists():
         return
 
-    custom_block = f"""
-{CUSTOM_SOONG_BEGIN}
-
-dex_import {{
-    name: "oplus-services",
-    jars: ["proprietary/system/framework/oplus-services.jar"],
-    system_ext_specific: false,
-}}
-
-prebuilt_overlay {{
-    name: "aon.frameworkres.overlay.product",
-    src: ":aon_frameworkres_overlay_apk",
-    filename: "aon.frameworkres.overlay.product.apk",
-    product_specific: true,
-}}
-
-{CUSTOM_SOONG_END}
-"""
-
     old_text = android_bp.read_text()
     new_text = re.sub(
         rf"\n?{re.escape(CUSTOM_SOONG_BEGIN)}.*?{re.escape(CUSTOM_SOONG_END)}\n?",
         "",
         old_text,
         flags=re.S,
-    ).rstrip() + "\n" + custom_block
+    ).rstrip() + "\n"
 
     if new_text != old_text:
         android_bp.write_text(new_text)
 
 
 write_custom_android_bp()
+
