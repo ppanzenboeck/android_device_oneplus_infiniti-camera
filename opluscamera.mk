@@ -12,6 +12,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_SYSTEM_SERVER_JARS += \
     oplus-services
 PRODUCT_DEX_PREOPT_MODULE_CONFIGS += oplus-services=disable
+DISABLE_DEXPREOPT_CHECK := true
 
 # Framework
 # PRODUCT_BOOT_JARS += \
