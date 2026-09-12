@@ -98,7 +98,14 @@
 
     <!-- OPLUS phone manager -->
     <privapp-permissions package="com.oplus.phonemanager">
+        <permission name="android.permission.PACKAGE_USAGE_STATS"/>
+        <permission name="android.permission.INTERACT_ACROSS_USERS"/>
+        <permission name="android.permission.USE_RESERVED_DISK"/>
+        <permission name="android.permission.REAL_GET_TASKS"/>
         <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+        <permission name="android.permission.DELETE_PACKAGES"/>
+        <permission name="android.permission.FORCE_STOP_PACKAGES"/>
+        <permission name="android.permission.SET_BIOMETRIC_DIALOG_ADVANCED"/>
     </privapp-permissions>
 
     <!-- OPLUS private safe -->
@@ -116,6 +123,10 @@
         <permission name="android.permission.MODIFY_PHONE_STATE"/>
         <permission name="android.permission.MANAGE_USERS"/>
         <permission name="android.permission.INSTALL_PACKAGES"/>
+        <permission name="android.permission.SCHEDULE_EXACT_ALARM"/>
+        <permission name="android.permission.STATUS_BAR"/>
+        <permission name="android.permission.FORCE_STOP_PACKAGES"/>
+        <permission name="android.permission.SUBSCRIBE_TO_KEYGUARD_LOCKED_STATE"/>
     </privapp-permissions>
 
     <!-- OPLUS Live Alert -->
