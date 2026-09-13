@@ -3,6 +3,7 @@ OPLUS_CAMERA_PATH := device/oneplus/infiniti-camera
 
 # Blob dependencies
 PRODUCT_PACKAGES += \
+    CameraThemedIcon \
     aon.frameworkres.overlay.product \
     android.hardware.graphics.common-V3-ndk.vendor \
     oplus-services \
