@@ -116,6 +116,9 @@
         <permission name="android.permission.MODIFY_PHONE_STATE"/>
         <permission name="android.permission.MANAGE_USERS"/>
         <permission name="android.permission.INSTALL_PACKAGES"/>
+        <permission name="android.permission.STATUS_BAR"/>
+        <permission name="android.permission.FORCE_STOP_PACKAGES"/>
+        <permission name="android.permission.SUBSCRIBE_TO_KEYGUARD_LOCKED_STATE"/>
     </privapp-permissions>
 
     <!-- OPLUS Live Alert -->
